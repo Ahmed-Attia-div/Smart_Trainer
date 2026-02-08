@@ -1,0 +1,11 @@
+tensorflow==2.19.0
+mediapipe==0.10.9
+protobuf==3.20.3
+opencv-python
+numpy
+fastapi
+uvicorn[standard]
+pyttsx3
+openai
+python-multipart
+websockets

@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>AI Trainer – Metadata Only Client</title>
+
+    <style>
+        body {
+            background: #111;
+            color: #0f0;
+            font-family: Arial, sans-serif;
+        }
+
+        button {
+            padding: 10px;
+            margin: 5px;
+            font-size: 16px;
+        }
+
+        video {
+            border: 2px solid #0f0;
+            width: 1000px;
+            height: 700px;
+            display: block;
+            margin-top: 10px;
+        }
+
+        #info {
+            margin-top: 15px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>AI Trainer (No Backend Video Rendering)</h2>
+
+    <!-- MODE SELECTION -->
+    <div id="mode-selection">
+        <button onclick="startMode(1)">Mode 1: Auto Detect</button>
+        <button onclick="startMode(2)">Mode 2: Manual Select</button>
+    </div>
+
+    <!-- MANUAL MODE -->
+    <div id="manual-selection" style="display:none; margin-top:10px">
+        <label>Select Exercise:</label>
+        <select id="exercise">
+            <option value="squat">Squat</option>
+            <option value="deadlift">Deadlift</option>
+            <option value="bench press">Bench Press</option>
+            <option value="lat pulldown">Lat Pulldown</option>
+            <option value="barbell biceps curl">Barbell Biceps Curl</option>
+            <option value="hammer curl">Hammer Curl</option>
+            <option value="incline bench press">Incline Bench Press</option>
+            <option value="decline bench press">Decline Bench Press</option>
+            <option value="chest fly machine">Chest Fly Machine</option>
+            <option value="shoulder press">Shoulder Press</option>
+            <option value="lateral raises">Lateral Raises</option>
+            <option value="pull up">Pull Up</option>
+            <option value="t bar row">T Bar Row</option>
+            <option value="tricep dips">Tricep Dips</option>
+            <option value="tricep pushdown">Tricep Pushdown</option>
+            <option value="push up">Push Up</option>
+            <option value="plank">Plank</option>
+            <option value="romanian deadlift">Romanian Deadlift</option>
+            <option value="hip thrust">Hip Thrust</option>
+            <option value="leg extension">Leg Extension</option>
+            <option value="leg raises">Leg Raises</option>
+            <option value="russian twist">Russian Twist</option>
+        </select>
+
+        <br><br>
+
+        <label>Select Video File:</label>
+        <input type="file" id="video-file" accept="video/*">
+        <br><br>
+
+        <button onclick="startManual()">Start Workout</button>
+    </div>
+
+    <!-- CAMERA / VIDEO -->
+    <div id="camera-section" style="display:none">
+        <video id="video" autoplay loop muted></video>
+        <div id="info">Waiting for data…</div>
+    </div>
+
+    <script>
+        let sessionId = null
+        let ws = null
+        let mode = null
+        let fps = 5
+
+        // ================= START MODE =================
+        async function startMode(selectedMode) {
+            mode = selectedMode
+
+            if (mode === 1) {
+                // Auto detect mode
+                const videoFile = "demo_2.mp4"  // simulated camera
+                await startSession(1, null)
+                openVideo(videoFile)
+            } else {
+                // Manual mode
+                document.getElementById("mode-selection").style.display = "none"
+                document.getElementById("manual-selection").style.display = "block"
+            }
+        }
+
+        // ================= MANUAL =================
+        async function startManual() {
+            const exercise = document.getElementById("exercise").value
+            const fileInput = document.getElementById("video-file")
+
+            if (fileInput.files.length === 0) {
+                alert("Please select a video file")
+                return
+            }
+
+            const fileURL = URL.createObjectURL(fileInput.files[0])
+            await startSession(2, exercise)
+
+            document.getElementById("manual-selection").style.display = "none"
+            openVideo(fileURL)
+        }
+
+        // ================= SESSION =================
+        async function startSession(modeVal, exercise) {
+            const res = await fetch("http://127.0.0.1:8000/session/start", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ mode: modeVal, exercise: exercise })
+            })
+
+            const data = await res.json()
+            sessionId = data.session_id
+        }
+
+        // ================= VIDEO + WS =================
+        function openVideo(fileURL) {
+            document.getElementById("camera-section").style.display = "block"
+
+            const video = document.getElementById("video")
+            video.src = fileURL
+            video.play()
+
+            video.onloadeddata = () => {
+                ws = new WebSocket(`ws://127.0.0.1:8000/ws/${sessionId}`)
+
+                ws.onmessage = function (evt) {
+                    const data = JSON.parse(evt.data)
+                    displayFeedback(data)
+                }
+
+                // Send frames to backend (AI only)
+                setInterval(() => {
+                    if (ws.readyState !== 1) return
+
+                    const canvas = document.createElement("canvas")
+                    canvas.width = 320
+                    canvas.height = 240
+                    const ctx = canvas.getContext("2d")
+
+                    ctx.drawImage(video, 0, 0, 320, 240)
+                    const b64 = canvas.toDataURL("image/jpeg", 0.6).split(",")[1]
+
+                    ws.send(JSON.stringify({ frame: b64 }))
+                }, 1000 / fps)
+            }
+        }
+
+        // ================= UI =================
+        function displayFeedback(data) {
+            let html = ""
+
+            if (!data.exercise) {
+                html += "<div>Detecting exercise…</div>"
+            } else {
+                html += `<div><b>Exercise:</b> ${data.exercise}</div>`
+                html += `<div><b>Reps:</b> ${data.reps ?? 0}</div>`
+                html += `<div><b>Sets:</b> ${data.sets ?? 0}</div>`
+
+                // 🆕 New Features
+                // Injury Warning (Red)
+                if (data.injury_warning) {
+                    html += `<div style="color:#ff4444; font-weight:bold; margin-top:10px;">⚠️ ${data.injury_warning}</div>`
+                }
+
+                // Form Quality Score
+                if (data.form_quality) {
+                    const score = data.form_quality.score
+                    const grade = data.form_quality.grade
+                    let color = "#0f0"  // green
+                    if (score < 60) color = "#ff4444"  // red
+                    else if (score < 75) color = "#ffaa00"  // orange
+                    else if (score < 90) color = "#ffff00"  // yellow
+
+                    html += `<div style="margin-top:5px;"><b>Form Quality:</b> <span style="color:${color}">${score.toFixed(0)}% (${grade})</span></div>`
+                }
+
+                // Calories
+                if (data.calories > 0) {
+                    html += `<div style="margin-top:5px;"><b>🔥 Calories:</b> ${data.calories.toFixed(1)} cal</div>`
+                }
+
+                // 🗣️ Process Audio Queue
+                if (data.audio_queue && data.audio_queue.length > 0) {
+                    data.audio_queue.forEach(msg => speakText(msg))
+                }
+            }
+
+            document.getElementById("info").innerHTML = html
+        }
+
+        // ================= TTS =================
+        let lastSpokenTime = 0
+        const SPEAK_COOLDOWN = 3000 // 3 seconds min between messages
+
+        function speakText(text) {
+            if (!text) return
+
+            // Simple cooldown to prevent overlapping too much
+            const now = Date.now()
+            if (now - lastSpokenTime < 1000) return // 1s minimal gap
+
+            // Configure utterance
+            const utterance = new SpeechSynthesisUtterance(text)
+            utterance.lang = "en-US"
+            utterance.rate = 1.1
+            utterance.volume = 1.0
+
+            window.speechSynthesis.speak(utterance)
+            lastSpokenTime = now
+
+            console.log("🗣️ Speaking:", text)
+        }
+    </script>
+
+</body>
+
+</html>

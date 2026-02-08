@@ -1,0 +1,880 @@
+{
+  "barbell biceps curl": {
+    "front": [
+      {
+        "joint": "elbow",
+        "threshold": 30,
+        "condition": "<",
+        "good_mean": 20,
+        "bad_mean": 45,
+        "message": "Fully extend your arms at the bottom of the curl!"
+      },
+      {
+        "joint": "shoulder",
+        "threshold": 15,
+        "condition": ">",
+        "good_mean": 5,
+        "bad_mean": 25,
+        "message": "Keep your elbows pinned to your sides, avoid swinging!"
+      }
+    ],
+    "side": [
+      {
+        "joint": "elbow",
+        "threshold": 145,
+        "condition": "<",
+        "good_mean": 130,
+        "bad_mean": 160,
+        "message": "Squeeze at the top! Full ROM is 0-145 degrees."
+      },
+      {
+        "joint": "hip",
+        "threshold": 165,
+        "condition": "<",
+        "good_mean": 175,
+        "bad_mean": 150,
+        "message": "Keep your torso upright, avoid leaning back!"
+      }
+    ]
+  },
+  "bench press": {
+    "45": [
+      {
+        "joint": "elbow",
+        "threshold": 138.8,
+        "condition": ">",
+        "good_mean": 92.9,
+        "bad_mean": 146.2,
+        "message": "Increase your range of motion!"
+      },
+      {
+        "joint": "shoulder",
+        "threshold": 58.5,
+        "condition": "<",
+        "good_mean": 68.1,
+        "bad_mean": 5.6,
+        "message": "Lower the bar to your chest!"
+      },
+      {
+        "joint": "knee",
+        "threshold": 167.7,
+        "condition": ">",
+        "good_mean": 134.0,
+        "bad_mean": 158.7,
+        "message": "Keep feet planted firmly on the ground!"
+      }
+    ],
+    "front": [
+      {
+        "joint": "elbow",
+        "threshold": 157.3,
+        "condition": ">",
+        "good_mean": 110.8,
+        "bad_mean": 145.9,
+        "message": "Increase your range of motion!"
+      },
+      {
+        "joint": "shoulder",
+        "threshold": 67.0,
+        "condition": ">",
+        "good_mean": 49.2,
+        "bad_mean": 88.1,
+        "message": "Lower the bar evenly on both sides!"
+      }
+    ],
+    "side": [
+      {
+        "joint": "shoulder",
+        "threshold": 30.4,
+        "condition": "<",
+        "good_mean": 39.1,
+        "bad_mean": 4.0,
+        "message": "Lower the bar more for full range of motion!"
+      },
+      {
+        "joint": "elbow",
+        "threshold": 90,
+        "condition": ">",
+        "good_mean": 75,
+        "bad_mean": 120,
+        "message": "Touch your chest for full ROM!"
+      }
+    ]
+  },
+  "chest fly machine": {
+    "front": [
+      {
+        "joint": "elbow",
+        "threshold": 160,
+        "condition": "<",
+        "good_mean": 170,
+        "bad_mean": 140,
+        "message": "Keep your elbows slightly bent but consistent!"
+      },
+      {
+        "joint": "shoulder",
+        "threshold": 45,
+        "condition": "<",
+        "good_mean": 30,
+        "bad_mean": 60,
+        "message": "Bring handles together at the center!"
+      }
+    ],
+    "side": [
+      {
+        "joint": "shoulder",
+        "threshold": 70,
+        "condition": "<",
+        "good_mean": 45,
+        "bad_mean": 90,
+        "message": "Open your chest fully at the start!"
+      },
+      {
+        "joint": "hip",
+        "threshold": 165,
+        "condition": "<",
+        "good_mean": 175,
+        "bad_mean": 150,
+        "message": "Keep your back flat against the pad!"
+      }
+    ]
+  },
+  "deadlift": {
+    "side": [
+      {
+        "joint": "hip",
+        "threshold": 45,
+        "condition": ">",
+        "good_mean": 30,
+        "bad_mean": 60,
+        "message": "Hinge at the hips! Push your butt back more."
+      },
+      {
+        "joint": "knee",
+        "threshold": 160,
+        "condition": "<",
+        "good_mean": 170,
+        "bad_mean": 140,
+        "message": "Keep knees slightly bent, avoid hyperextension!"
+      },
+      {
+        "joint": "shoulder",
+        "threshold": 20,
+        "condition": ">",
+        "good_mean": 10,
+        "bad_mean": 35,
+        "message": "Keep your back neutral! Avoid rounding."
+      }
+    ],
+    "front": [
+      {
+        "joint": "knee",
+        "threshold": 25,
+        "condition": ">",
+        "good_mean": 15,
+        "bad_mean": 40,
+        "message": "Keep both knees aligned, avoid caving inward!"
+      },
+      {
+        "joint": "shoulder",
+        "threshold": 15,
+        "condition": ">",
+        "good_mean": 5,
+        "bad_mean": 25,
+        "message": "Keep shoulders level and chest up!"
+      }
+    ]
+  },
+  "decline bench press": {
+    "side": [
+      {
+        "joint": "elbow",
+        "threshold": 100,
+        "condition": ">",
+        "good_mean": 80,
+        "bad_mean": 130,
+        "message": "Lower the bar to your lower chest!"
+      },
+      {
+        "joint": "shoulder",
+        "threshold": 25,
+        "condition": "<",
+        "good_mean": 35,
+        "bad_mean": 10,
+        "message": "Allow full shoulder extension at the bottom!"
+      }
+    ],
+    "front": [
+      {
+        "joint": "elbow",
+        "threshold": 155,
+        "condition": ">",
+        "good_mean": 100,
+        "bad_mean": 165,
+        "message": "Go through full range of motion!"
+      },
+      {
+        "joint": "shoulder",
+        "threshold": 60,
+        "condition": ">",
+        "good_mean": 45,
+        "bad_mean": 80,
+        "message": "Keep the bar path even on both sides!"
+      }
+    ]
+  },
+  "hammer curl": {
+    "side": [
+      {
+        "joint": "elbow",
+        "threshold": 145,
+        "condition": "<",
+        "good_mean": 130,
+        "bad_mean": 165,
+        "message": "Curl all the way up! Target 0-145 degree ROM."
+      },
+      {
+        "joint": "hip",
+        "threshold": 165,
+        "condition": "<",
+        "good_mean": 175,
+        "bad_mean": 150,
+        "message": "Keep your torso upright, no swinging!"
+      }
+    ],
+    "front": [
+      {
+        "joint": "shoulder",
+        "threshold": 15,
+        "condition": ">",
+        "good_mean": 5,
+        "bad_mean": 25,
+        "message": "Keep elbows pinned to your sides!"
+      },
+      {
+        "joint": "elbow",
+        "threshold": 30,
+        "condition": "<",
+        "good_mean": 15,
+        "bad_mean": 50,
+        "message": "Extend your arms fully at the bottom!"
+      }
+    ]
+  },
+  "hip thrust": {
+    "side": [
+      {
+        "joint": "hip",
+        "threshold": 170,
+        "condition": "<",
+        "good_mean": 180,
+        "bad_mean": 150,
+        "message": "Drive your hips to full extension! Squeeze at the top."
+      },
+      {
+        "joint": "knee",
+        "threshold": 100,
+        "condition": ">",
+        "good_mean": 90,
+        "bad_mean": 120,
+        "message": "Keep knees at 90 degrees at the top!"
+      }
+    ],
+    "front": [
+      {
+        "joint": "knee",
+        "threshold": 20,
+        "condition": ">",
+        "good_mean": 10,
+        "bad_mean": 35,
+        "message": "Keep knees aligned, avoid caving inward!"
+      },
+      {
+        "joint": "hip",
+        "threshold": 15,
+        "condition": ">",
+        "good_mean": 5,
+        "bad_mean": 25,
+        "message": "Keep hips level at the top!"
+      }
+    ]
+  },
+  "incline bench press": {
+    "side": [
+      {
+        "joint": "elbow",
+        "threshold": 100,
+        "condition": ">",
+        "good_mean": 75,
+        "bad_mean": 130,
+        "message": "Lower the bar to your upper chest!"
+      },
+      {
+        "joint": "shoulder",
+        "threshold": 45,
+        "condition": "<",
+        "good_mean": 60,
+        "bad_mean": 25,
+        "message": "Keep shoulders retracted!"
+      }
+    ],
+    "front": [
+      {
+        "joint": "elbow",
+        "threshold": 155,
+        "condition": ">",
+        "good_mean": 100,
+        "bad_mean": 165,
+        "message": "Go through full range of motion!"
+      },
+      {
+        "joint": "shoulder",
+        "threshold": 65,
+        "condition": ">",
+        "good_mean": 50,
+        "bad_mean": 85,
+        "message": "Keep the bar path symmetrical!"
+      }
+    ]
+  },
+  "lat pulldown": {
+    "45": [
+      {
+        "joint": "elbow",
+        "threshold": 60,
+        "condition": ">",
+        "good_mean": 50,
+        "bad_mean": 75,
+        "message": "Pull the bar lower! Squeeze your lats."
+      },
+      {
+        "joint": "shoulder",
+        "threshold": 45,
+        "condition": ">",
+        "good_mean": 30,
+        "bad_mean": 60,
+        "message": "Bring elbows closer to your body!"
+      }
+    ],
+    "front": [
+      {
+        "joint": "elbow",
+        "threshold": 62.9,
+        "condition": "<",
+        "good_mean": 67.6,
+        "bad_mean": 56.2,
+        "message": "Pull down evenly with both arms!"
+      },
+      {
+        "joint": "shoulder",
+        "threshold": 55.6,
+        "condition": "<",
+        "good_mean": 66.4,
+        "bad_mean": 43.7,
+        "message": "Control your shoulder position!"
+      }
+    ],
+    "side": [
+      {
+        "joint": "elbow",
+        "threshold": 58.2,
+        "condition": ">",
+        "good_mean": 52.6,
+        "bad_mean": 63.7,
+        "message": "Pull the bar to your upper chest!"
+      },
+      {
+        "joint": "hip",
+        "threshold": 85,
+        "condition": "<",
+        "good_mean": 95,
+        "bad_mean": 75,
+        "message": "Lean back slightly at 20-30 degrees!"
+      }
+    ]
+  },
+  "lateral raises": {
+    "front": [
+      {
+        "joint": "elbow",
+        "threshold": 160,
+        "condition": "<",
+        "good_mean": 170,
+        "bad_mean": 145,
+        "message": "Keep slight bend in elbows!"
+      },
+      {
+        "joint": "shoulder",
+        "threshold": 80,
+        "condition": "<",
+        "good_mean": 90,
+        "bad_mean": 60,
+        "message": "Raise arms to shoulder height!"
+      }
+    ],
+    "side": [
+      {
+        "joint": "shoulder",
+        "threshold": 80,
+        "condition": "<",
+        "good_mean": 90,
+        "bad_mean": 60,
+        "message": "Lift until arms are parallel to the floor!"
+      },
+      {
+        "joint": "hip",
+        "threshold": 165,
+        "condition": "<",
+        "good_mean": 175,
+        "bad_mean": 150,
+        "message": "Keep torso stable, no swinging!"
+      }
+    ]
+  },
+  "leg extension": {
+    "side": [
+      {
+        "joint": "knee",
+        "threshold": 165,
+        "condition": "<",
+        "good_mean": 175,
+        "bad_mean": 150,
+        "message": "Fully extend your legs at the top!"
+      },
+      {
+        "joint": "hip",
+        "threshold": 85,
+        "condition": "<",
+        "good_mean": 90,
+        "bad_mean": 70,
+        "message": "Keep your back against the pad!"
+      }
+    ],
+    "front": [
+      {
+        "joint": "knee",
+        "threshold": 20,
+        "condition": ">",
+        "good_mean": 10,
+        "bad_mean": 35,
+        "message": "Keep both legs moving together!"
+      }
+    ]
+  },
+  "leg raises": {
+    "side": [
+      {
+        "joint": "hip",
+        "threshold": 80,
+        "condition": "<",
+        "good_mean": 90,
+        "bad_mean": 60,
+        "message": "Raise legs to 90 degrees!"
+      },
+      {
+        "joint": "knee",
+        "threshold": 160,
+        "condition": "<",
+        "good_mean": 175,
+        "bad_mean": 140,
+        "message": "Keep legs straight!"
+      }
+    ],
+    "front": [
+      {
+        "joint": "hip",
+        "threshold": 15,
+        "condition": ">",
+        "good_mean": 5,
+        "bad_mean": 25,
+        "message": "Keep your hips level!"
+      }
+    ]
+  },
+  "plank": {
+    "side": [
+      {
+        "joint": "hip",
+        "threshold": 170,
+        "condition": "<",
+        "good_mean": 180,
+        "bad_mean": 155,
+        "message": "Keep your hips in line with shoulders!"
+      },
+      {
+        "joint": "shoulder",
+        "threshold": 80,
+        "condition": "<",
+        "good_mean": 90,
+        "bad_mean": 65,
+        "message": "Stack shoulders over elbows!"
+      },
+      {
+        "joint": "knee",
+        "threshold": 160,
+        "condition": "<",
+        "good_mean": 175,
+        "bad_mean": 145,
+        "message": "Keep legs straight!"
+      }
+    ]
+  },
+  "pull up": {
+    "front": [
+      {
+        "joint": "elbow",
+        "threshold": 40,
+        "condition": ">",
+        "good_mean": 25,
+        "bad_mean": 60,
+        "message": "Pull higher! Chin should clear the bar."
+      },
+      {
+        "joint": "shoulder",
+        "threshold": 35,
+        "condition": ">",
+        "good_mean": 20,
+        "bad_mean": 50,
+        "message": "Engage your lats, pull shoulders down!"
+      }
+    ],
+    "side": [
+      {
+        "joint": "elbow",
+        "threshold": 45,
+        "condition": ">",
+        "good_mean": 30,
+        "bad_mean": 70,
+        "message": "Full flexion at the top, full extension at bottom!"
+      },
+      {
+        "joint": "shoulder",
+        "threshold": 20,
+        "condition": ">",
+        "good_mean": 10,
+        "bad_mean": 40,
+        "message": "Initiate pull with scapular depression!"
+      }
+    ]
+  },
+  "push up": {
+    "side": [
+      {
+        "joint": "elbow",
+        "threshold": 100,
+        "condition": ">",
+        "good_mean": 90,
+        "bad_mean": 130,
+        "message": "Lower until your elbows reach 90 degrees!"
+      },
+      {
+        "joint": "hip",
+        "threshold": 165,
+        "condition": "<",
+        "good_mean": 180,
+        "bad_mean": 150,
+        "message": "Keep your body in a straight line!"
+      },
+      {
+        "joint": "shoulder",
+        "threshold": 55,
+        "condition": ">",
+        "good_mean": 45,
+        "bad_mean": 70,
+        "message": "Keep elbows at 45 degrees, not flared out!"
+      }
+    ],
+    "front": [
+      {
+        "joint": "elbow",
+        "threshold": 30,
+        "condition": ">",
+        "good_mean": 15,
+        "bad_mean": 45,
+        "message": "Keep both arms balanced!"
+      },
+      {
+        "joint": "shoulder",
+        "threshold": 55,
+        "condition": ">",
+        "good_mean": 45,
+        "bad_mean": 75,
+        "message": "Elbows at 45 degrees, avoid flaring out!"
+      }
+    ]
+  },
+  "romanian deadlift": {
+    "side": [
+      {
+        "joint": "hip",
+        "threshold": 45,
+        "condition": ">",
+        "good_mean": 30,
+        "bad_mean": 60,
+        "message": "Push hips back more! Keep bar close to legs."
+      },
+      {
+        "joint": "knee",
+        "threshold": 160,
+        "condition": "<",
+        "good_mean": 170,
+        "bad_mean": 145,
+        "message": "Keep slight knee bend, don't lock out!"
+      },
+      {
+        "joint": "shoulder",
+        "threshold": 15,
+        "condition": ">",
+        "good_mean": 5,
+        "bad_mean": 30,
+        "message": "Keep back flat, avoid rounding!"
+      }
+    ],
+    "front": [
+      {
+        "joint": "shoulder",
+        "threshold": 15,
+        "condition": ">",
+        "good_mean": 5,
+        "bad_mean": 25,
+        "message": "Keep shoulders level and square!"
+      }
+    ]
+  },
+  "russian twist": {
+    "front": [
+      {
+        "joint": "shoulder",
+        "threshold": 35,
+        "condition": "<",
+        "good_mean": 45,
+        "bad_mean": 25,
+        "message": "Rotate your torso more, not just arms!"
+      },
+      {
+        "joint": "hip",
+        "threshold": 60,
+        "condition": "<",
+        "good_mean": 70,
+        "bad_mean": 45,
+        "message": "Maintain V-sit position!"
+      }
+    ],
+    "side": [
+      {
+        "joint": "hip",
+        "threshold": 125,
+        "condition": ">",
+        "good_mean": 110,
+        "bad_mean": 140,
+        "message": "Keep torso at 45 degrees to the floor!"
+      },
+      {
+        "joint": "knee",
+        "threshold": 100,
+        "condition": ">",
+        "good_mean": 90,
+        "bad_mean": 120,
+        "message": "Keep knees bent and feet off the ground!"
+      }
+    ]
+  },
+  "shoulder press": {
+    "front": [
+      {
+        "joint": "elbow",
+        "threshold": 40.9,
+        "condition": "<",
+        "good_mean": 57.0,
+        "bad_mean": 23.3,
+        "message": "Increase your range of motion!"
+      },
+      {
+        "joint": "shoulder",
+        "threshold": 55.3,
+        "condition": "<",
+        "good_mean": 65.4,
+        "bad_mean": 42.1,
+        "message": "Control your shoulder position!"
+      }
+    ],
+    "side": [
+      {
+        "joint": "elbow",
+        "threshold": 165,
+        "condition": "<",
+        "good_mean": 175,
+        "bad_mean": 150,
+        "message": "Fully extend at the top!"
+      },
+      {
+        "joint": "hip",
+        "threshold": 165,
+        "condition": "<",
+        "good_mean": 175,
+        "bad_mean": 150,
+        "message": "Keep core tight, no arching!"
+      }
+    ]
+  },
+  "squat": {
+    "side": [
+      {
+        "joint": "knee",
+        "threshold": 100,
+        "condition": ">",
+        "good_mean": 90,
+        "bad_mean": 120,
+        "message": "Go deeper! Target 90 degrees knee flexion."
+      },
+      {
+        "joint": "hip",
+        "threshold": 100,
+        "condition": ">",
+        "good_mean": 95,
+        "bad_mean": 130,
+        "message": "Hinge at hips more, sit back!"
+      },
+      {
+        "joint": "shoulder",
+        "threshold": 20,
+        "condition": ">",
+        "good_mean": 10,
+        "bad_mean": 35,
+        "message": "Keep chest up, avoid forward lean!"
+      }
+    ],
+    "front": [
+      {
+        "joint": "knee",
+        "threshold": 25,
+        "condition": ">",
+        "good_mean": 10,
+        "bad_mean": 40,
+        "message": "Keep knees aligned over toes, avoid caving!"
+      },
+      {
+        "joint": "hip",
+        "threshold": 15,
+        "condition": ">",
+        "good_mean": 5,
+        "bad_mean": 30,
+        "message": "Keep hips level throughout the movement!"
+      }
+    ]
+  },
+  "t bar row": {
+    "side": [
+      {
+        "joint": "hip",
+        "threshold": 55,
+        "condition": ">",
+        "good_mean": 45,
+        "bad_mean": 70,
+        "message": "Maintain hip hinge at 45-55 degrees!"
+      },
+      {
+        "joint": "elbow",
+        "threshold": 60,
+        "condition": ">",
+        "good_mean": 45,
+        "bad_mean": 80,
+        "message": "Pull elbows back past your torso!"
+      },
+      {
+        "joint": "shoulder",
+        "threshold": 20,
+        "condition": ">",
+        "good_mean": 10,
+        "bad_mean": 35,
+        "message": "Keep back flat, avoid rounding!"
+      }
+    ],
+    "front": [
+      {
+        "joint": "elbow",
+        "threshold": 25,
+        "condition": ">",
+        "good_mean": 10,
+        "bad_mean": 40,
+        "message": "Pull evenly with both arms!"
+      }
+    ]
+  },
+  "tricep dips": {
+    "side": [
+      {
+        "joint": "elbow",
+        "threshold": 100,
+        "condition": ">",
+        "good_mean": 90,
+        "bad_mean": 120,
+        "message": "Lower until elbows at 90 degrees!"
+      },
+      {
+        "joint": "shoulder",
+        "threshold": 25,
+        "condition": "<",
+        "good_mean": 15,
+        "bad_mean": 40,
+        "message": "Don't let shoulders shrug up!"
+      }
+    ],
+    "front": [
+      {
+        "joint": "elbow",
+        "threshold": 20,
+        "condition": ">",
+        "good_mean": 10,
+        "bad_mean": 35,
+        "message": "Keep elbows close to your body!"
+      },
+      {
+        "joint": "shoulder",
+        "threshold": 15,
+        "condition": ">",
+        "good_mean": 5,
+        "bad_mean": 25,
+        "message": "Keep shoulders level!"
+      }
+    ]
+  },
+  "tricep pushdown": {
+    "side": [
+      {
+        "joint": "elbow",
+        "threshold": 30,
+        "condition": ">",
+        "good_mean": 15,
+        "bad_mean": 50,
+        "message": "Fully extend your arms at the bottom!"
+      },
+      {
+        "joint": "hip",
+        "threshold": 165,
+        "condition": "<",
+        "good_mean": 175,
+        "bad_mean": 150,
+        "message": "Keep torso upright!"
+      }
+    ],
+    "front": [
+      {
+        "joint": "shoulder",
+        "threshold": 15,
+        "condition": ">",
+        "good_mean": 5,
+        "bad_mean": 25,
+        "message": "Keep elbows pinned to your sides!"
+      },
+      {
+        "joint": "elbow",
+        "threshold": 20,
+        "condition": ">",
+        "good_mean": 5,
+        "bad_mean": 35,
+        "message": "Keep both arms moving together!"
+      }
+    ]
+  }
+}
